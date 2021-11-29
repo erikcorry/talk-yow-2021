@@ -7,22 +7,33 @@ html, body {
 }
 .top {
   height:10%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'ClashDisplay', 'Open Sans', sans-serif;
   font-size: 180%;
 }
 .middle {
   height:84%;
-  color: #4040ff;
+  color: #000000;
 }
 .bottom {
   height:5%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'ClashDisplay', 'Open Sans', sans-serif;
   font-size: 180%;
 }
 .other-slide {
   background-color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'ClashDisplay', 'Open Sans', sans-serif;
   font-size: 60px
+}
+.small-note {
+  background-color: #ffffff;
+  font-family: 'ClashDisplay', 'Open Sans', sans-serif;
+  font-size: 24px;
+  color: #b0b0b0;
+}
+@font-face {
+  font-family: "ClashDisplay";
+  src: url("fonts/ClashDisplay-Medium.woff");
+  font-display: swap;
 }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +42,7 @@ html, body {
 <script type="text/javascript" src="mraleph/shaky.dart.js"></script>
 <script defer>
 
-page = 20
+page = 0
 allSlides = null
 
 keydown = function(e) {
@@ -92,6 +103,14 @@ previous = function() {
 <div class=top>
 </div>
 <div class=middle>
+
+<div id=slide0.0 style="display: none" class="other-slide">
+<center>Toit</center>
+<center>
+  <img src="logos/toit.svg" width=20% />
+  <img src="images/microcontrollers.svg" width=30% height=30% />
+</center>
+</div>
 
 <div id=slide1.0 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
@@ -289,24 +308,51 @@ previous = function() {
 </div>
 
 <div id=slide12.1 style="display: none" class="other-slide">
-<center>How to we make a language good for small systems?</center>
+<center>How do we make a language good for small systems?</center>
 <ul>
 </ul>
 </div>
 
 <div id=slide12.2 style="display: none" class="other-slide">
-<center>How to we make a language good for small systems?</center>
+<center>How do we make a language good for small systems?</center>
+<div style="max-width: 80%; margin-left: 10%">
 <ul>
 <li>All metadata is in flash</li>
 </ul>
 </div>
+</div>
 
 <div id=slide12.3 style="display: none" class="other-slide">
-<center>How to we make a language good for small systems?</center>
+<center>How do we make a language good for small systems?</center>
+<div style="max-width: 80%; margin-left: 10%">
 <ul>
 <li>All metadata is in flash</li>
 <li>Objects don't change size or type or fields</li>
 </ul>
+</div>
+</div>
+
+<div id=slide12.4 style="display: none" class="other-slide">
+<center>How do we make a language good for small systems?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>All metadata is in flash</li>
+<li>Objects don't change size or type or fields</li>
+<li>Closed world assumption</li>
+</ul>
+</div>
+</div>
+
+<div id=slide12.5 style="display: none" class="other-slide">
+<center>How do we make a language good for small systems?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>All metadata is in flash</li>
+<li>Objects don't change size or type or fields</li>
+<li>Closed world assumption</li>
+<li>Enables important optimizations</li>
+</ul>
+</div>
 </div>
 
 <div id=slide20.1 style="display: none" class="shaky-container"><pre class="shaky">
@@ -410,7 +456,7 @@ x |  *  |     |     |     |     |     |     |
         |     |     |     |     |     |     |     |
    size |     |  *  |  *  |     |     |     |     |
         |     |     |     |     |     |     |     |
-        +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+--
+        +-----+-----+-----+-----+-----+-----+-----+     +-----+-----+-----+-----+-----+-----+--
                                                         |     |     |     |     |     |     |
                                                    close|     |     |     |     |     |     |*
                                                         |     |     |     |     |     |     |
@@ -457,7 +503,7 @@ x                              +-----+-----+-----+-----+-----+-----+-----+-----+
       +-----+-----+-----+------+-----+-----+-----+-----+-----+-----+
  size |     |     |     |      |     |     |     |
       |     |  *  |  *  |      |     |     |     |
-      +-----+-----+-----+------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+--
+      +-----+-----+-----+------+-----+-----+-----+     +-----+-----+-----+-----+-----+-----+--
                                                        |     |     |     |     |     |     | 
                                                   close|     |     |     |     |     |     |*
                                                        +-----+-----+-----+-----+-----+-----+--
@@ -502,7 +548,7 @@ x                                       +--+--------+-------+----------------+--
         +--+---------+---------+--------+-----+-----+-------+----------------+-----+-----+
    size |  |         |         |        |     |     |       |               
         |  |  *      |  *      |        |     |     |       |               
-        +--+---------+---------+--------+-----+-----+-------+----------------+-----+-----+-
+        +--+---------+---------+--------+-----+-----+-------+                +-----+-----+-
                                                                              |     |     | 
                                                                         close|     |     | 
                                                                              +-----+-----+-
@@ -624,6 +670,93 @@ x                                       +--+--------+-------+----------------+--
 <center>These techniques are described in</center>
 <center><b>Software and Hardware Techniques for Efficient Polymorphic Calls</b></center>
 <center>by Karel Driesen</center>
+</div>
+
+<div id=slide22.1 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+</div>
+
+<div id=slide22.2 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>Optional typing</li>
+</ul>
+</div>
+</div>
+
+<div id=slide22.2.1 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>Optional typing with nullable types</li>
+</ul>
+</div>
+</div>
+
+<div id=slide22.3 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>Optional typing with nullable types</li>
+<li>Garbage collection</li>
+</ul>
+</div>
+</div>
+
+<div id=slide22.4 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>Optional typing with nullable types</li>
+<li>Garbage collection</li>
+<li>A well thought out core library</li>
+</ul>
+</div>
+</div>
+
+<div id=slide22.4 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>Optional typing with nullable types</li>
+<li>Garbage collection</li>
+<li>A well thought out core library</li>
+</ul>
+</div>
+</div>
+
+<div id=slide22.5 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<div style="max-width: 80%; margin-left: 10%">
+<ul>
+<li>Optional typing with nullable types</li>
+<li>Garbage collection</li>
+<li>A <a href="https://blog.toit.io/hash-maps-that-dont-hate-you-1a96150b492a" target=_blank>well thought out core library</a></li>
+</ul>
+</div>
+</div>
+
+<div id=slide24.1 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+</div>
+
+<div id=slide24.2 style="display: none" class="other-slide">
+<center>How do we make a language good for developers?</center>
+<center><img width=40% src="images/xkcd.png" /></center>
+<center><div class=small-note>Shamelessly edited from <a href="https://xkcd.com/353/" target=_blank>XKCD 353</a></div></center>
+</div>
+
+<div id=slide25.1 style="display: none" class="other-slide">
+<center><a target=_blank href="https://pkg.toit.io/"><img src=images/packages.svg width=40% /></a></center>
+</div>
+
+<div id=slide26.1 style="display: none" class="other-slide">
+<center><a target=_blank href="https://learn.adafruit.com/ooze-master-3000-neopixel-simulated-liquid-physics">The ooze master</a></center>
+</div>
+
+<div id=slide26.2 style="display: none" class="other-slide">
+<center><a target=_blank href="https://www.youtube.com/watch?v=mni8DXKHUvs">Toit like a Toiger</a></center>
 </div>
 
 <div id=slide30.1 style="display: none" class="shaky-container"><pre class="shaky">
@@ -768,6 +901,16 @@ x                                       +--+--------+-------+----------------+--
                           |    |    |         |         |     
                           +----+    +---------+         +-----
 </pre></div>
+
+<div id=slide40.1 style="display: none" class="other-slide">
+<center>Try Toit at <a target=_blank href="https://github.com/toitlang/toit">https://github.com/toitlang/</a></center>
+</div>
+
+<div id=slide40.2 style="display: none" class="other-slide">
+<center>
+<img src="/images/install.gif" />
+</center>
+</div>
 
 </div>
 <div class=bottom align=right>
