@@ -29,7 +29,7 @@ html, body {
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
 <script type="text/javascript" src="mraleph/shaky.dart.js"></script>
 <script>
-page = 1
+page = 13
 keydown = function(e) {
   if (e.code == "ArrowRight") next()
   else if (e.code == "Space") next()
@@ -67,7 +67,7 @@ previous = function() {
 </div>
 <div class=middle>
 
-<div id=slide1 style="display: inline" class="other-slide">
+<div id=slide1 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
 <p>
 <center>with a history of virtual machines</center>
@@ -240,53 +240,23 @@ close|     |     |     |     |     |     |  *  |
 </pre></div>
 
 <div id=slide10 style="display: none" class="shaky-container"><pre class="shaky">
-
-
-
-
-
-                                            
-
-
-
-
-
-                       +-----+-----+-----+-----+-----+-----+-----+
-                       |     |     |     |     |     |     |     |
-                    do |     |  *  |  *  |     |     |     |     |
-                       +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-                                               |     |     |     |     |     |     |     |
-                                     to_string |  *  |  *  |  *  |  *  |  *  |  *  |  *  |
-     +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-     |     |     |     |     |     |     |     |
-   x |  *  |     |     |     |     |     |     |
-     +-----+-----+-----+-----+-----+-----+-----+-----+
-           |     |     |     |     |     |     |     |
-         y |  *  |     |     |     |     |     |     |
-           +-----+-----+-----+-----+-----+-----+-----+
-           |     |     |     |     |     |     |     |
-      size |     |  *  |  *  |     |     |     |     |
-     +-----+-----+-----+-----+-----+-----+-----+-----+
-     |     |     |     |     |     |     |     |
-close|     |     |     |     |     |     |  *  |
-     +-----+-----+-----+-----+-----+-----+-----+
 </pre></div>
 
 <div id=slide11 style="display: none" class="shaky-container"><pre class="shaky">
 
-                                    Point:   0
-      do:         3 
-                                    List:    1
-      to_string:  7 
-                                    Map:     2
-      x:          0 
-                                    Foo:     3
-      y:          1    
-                                    Bar:     4
-      size:       1 
-                                    Baz:     5
-     close:       0 
-                                    Socket:  6
+                                                                  Point:   0
+                                    do:         3 
+                                                                  List:    1
+                                    to_string:  7 
+                                                                  Map:     2
+                                    x:          0 
+                                                                  Foo:     3
+                                    y:          1    
+                                                                  Bar:     4
+                                    size:       1 
+                                                                  Baz:     5
+                                   close:       0 
+  Dispatch table                                                  Socket:  6
 
  +-------+--------+----------+---------+--------+--------+-------------+----------------+-
  |       |        |          |         |        |        |             |                |
@@ -324,19 +294,19 @@ close
 
 <div id=slide12 style="display: none" class="shaky-container"><pre class="shaky">
 
-                                    Point:   0
-      do:         3 
-                                    List:    1
-      to_string:  7 
-                                    Map:     2
-      x:          0 
-                                    Foo:     3
-      y:          1    
-                                    Bar:     4
-      size:       1 
-                                    Baz:     5
-     close:       0 
-                                    Socket:  6
+                                                                  Point:   0
+                                    do:         3 
+                                                                  List:    1
+                                    to_string:  7 
+                                                                  Map:     2
+                                    x:          0 
+                                                                  Foo:     3
+                                    y:          1    
+                                                                  Bar:     4
+                                    size:       1 
+                                                                  Baz:     5
+                                   close:       0 
+  Dispatch table                                                  Socket:  6
 
  +-------+--------+----------+---------+--------+--------+-------------+----------------+-
  |       |        |          |         |        |        |             |                |
@@ -344,9 +314,49 @@ close
  |       |        |          |         |        |        |             |                |
  +-------+--------+----------+---------+--------+--------+-------------+----------------+-
  
+     0        1        2          3         4       5          6              7          ...
+
 </pre></div>
 
-<div id=slide13 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide13 style="display: inline" class="shaky-container"><pre class="shaky">
+
+                                                                  Point:   0
+                                    do:         3 
+                                                                  List:    1
+                                    to_string:  7 
+                                                                  Map:     2
+                                    x:          0 
+                                                                  Foo:     3
+                                    y:          1    
+                                                                  Bar:     4
+                                    size:       1 
+                                                                  Baz:     5
+                                   close:       0 
+  Dispatch table                                                  Socket:  6
+
+ +-------+--------+----------+---------+--------+--------+-------------+----------------+-
+ |       |        |          |         |        |        |             |                |
+ |Point.x| Point.y| List.size| Map.size| List.do| Map.do | Socket.close| Point.to_string|
+ |       |        |          |         |        |        |             |                |
+ +-------+--------+----------+---------+--------+--------+-------------+----------------+-
+
+     0        1        2          3         4       5          6              7          ...
+
+
+   For example:
+
+
+      Calling the size() method on an object that is a map:
+
+
+         int clas = object.get_class()             // 2
+
+
+         int name = bytecode.get_method_number()   // 1
+
+
+         int index = clas + name                   // 2 + 1 = 3
+ 
 </pre></div>
 
 <div id=slide14 style="display: none" class="shaky-container"><pre class="shaky">
