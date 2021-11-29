@@ -11,7 +11,8 @@ html, body {
   font-size: 180%;
 }
 .middle {
-  height:84%
+  height:84%;
+  color: #4040ff;
 }
 .bottom {
   height:5%;
@@ -28,8 +29,11 @@ html, body {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="mraleph/shaky.dart.js"></script>
-<script>
-page = 13
+<script defer>
+
+page = 0
+allSlides = null
+
 keydown = function(e) {
   if (e.code == "ArrowRight") next()
   else if (e.code == "Space") next()
@@ -41,25 +45,47 @@ keydown = function(e) {
   e.preventDefault()
 }
 document.addEventListener('keydown', keydown)
-next = function() {
-  var slide = document.getElementById('slide' + page)
-  slide.style.display = "none"
-  page++
-  slide = document.getElementById('slide' + page)
-  if (!slide) {
-    page--
-    slide = document.getElementById('slide' + page)
+
+// Sort elements by ids like slide10.3.19
+lexCompare = function(a, b) {
+  let as = a.id.substr(5).split(".")
+  let bs = b.id.substr(5).split(".")
+  for (let i = 0; i < as.length && i < bs.length; i++) {
+    let an = parseInt(as[i])
+    let bn = parseInt(bs[i])
+    let diff = an - bn
+    if (diff != 0) return diff
   }
-  slide.style.display = "inline"
+  return as.length - bs.length
 }
-previous = function() {
-  var slide = document.getElementById('slide' + page)
+
+getAllSlides = function() {
+  let allSlides = Array.prototype.filter.call(document.all, (elt) => elt.id.startsWith("slide"))
+  allSlides.sort(lexCompare)
+
+  let active = allSlides[page]
+  active.style.display = "inline"
+  return allSlides
+}
+
+next = function() {
+  if (!allSlides) allSlides=getAllSlides()
+  let slide = allSlides[page]
   slide.style.display = "none"
-  page--
-  if (page < 1) page = 1
-  slide = document.getElementById('slide' + page)
+  if (page + 1 < allSlides.length) page++
+  slide = allSlides[page]
   slide.style.display = "inline"
 }
+
+previous = function() {
+  if (!allSlides) allSlides=getAllSlides()
+  let slide = allSlides[page]
+  slide.style.display = "none"
+  if (page > 0) page--
+  slide = allSlides[page]
+  slide.style.display = "inline"
+}
+
 </script>
 </head>
 <body>
@@ -67,7 +93,7 @@ previous = function() {
 </div>
 <div class=middle>
 
-<div id=slide1 style="display: none" class="other-slide">
+<div id=slide1.0 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
 <p>
 <center>with a history of virtual machines</center>
@@ -77,7 +103,7 @@ previous = function() {
 </center>
 </div>
 
-<div id=slide2 style="display: none" class="other-slide">
+<div id=slide1.1 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
 <p>
 <center>with a history of virtual machines</center>
@@ -88,7 +114,7 @@ previous = function() {
 </center>
 </div>
 
-<div id=slide3 style="display: none" class="other-slide">
+<div id=slide1.2 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
 <p>
 <center>with a history of virtual machines</center>
@@ -100,7 +126,7 @@ previous = function() {
 </center>
 </div>
 
-<div id=slide4 style="display: none" class="other-slide">
+<div id=slide1.3 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
 <p>
 <center>with a history of virtual machines</center>
@@ -110,7 +136,7 @@ previous = function() {
 </center>
 </div>
 
-<div id=slide5 style="display: none" class="other-slide">
+<div id=slide1.4 style="display: none" class="other-slide">
 <center>Toit is brought to you by a team</center>
 <p>
 <center>with a history of virtual machines</center>
@@ -121,7 +147,7 @@ previous = function() {
 </center>
 </div>
 
-<div id=slide6 style="display: none" class="other-slide">
+<div id=slide10.0 style="display: none" class="other-slide">
 <center>In 2018 some of us decided to build</center>
 <p>
 <center>a new language for small devices</center>
@@ -131,7 +157,90 @@ previous = function() {
 </center>
 </div>
 
-<div id=slide7 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide10.1 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+</div>
+
+<div id=slide10.2 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+<span>
+<img src="images/esp32-from-alibaba.jpg" width=35% align=left />
+<span>The $2 ESP32
+</span>
+</span>
+</div>
+
+<div id=slide10.3 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+<span>
+<img src="images/esp32-from-alibaba.jpg" width=35% align=left />
+<span>The $2 ESP32
+<ul>
+<li>510k RAM</li>
+</ul>
+</span>
+</span>
+</div>
+
+<div id=slide10.4 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+<span>
+<img src="images/esp32-from-alibaba.jpg" width=35% align=left />
+<span>The $2 ESP32
+<ul>
+<li>510k RAM</li>
+<li>4Mb Flash</li>
+</ul>
+</span>
+</span>
+</div>
+
+<div id=slide10.5 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+<span>
+<img src="images/esp32-from-alibaba.jpg" width=35% align=left />
+<span>The $2 ESP32
+<ul>
+<li>510k RAM</li>
+<li>4Mb Flash</li>
+<li>Wifi and Bluetooth</li>
+</ul>
+</span>
+</span>
+</div>
+
+<div id=slide10.6 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+<span>
+<img src="images/esp32-from-alibaba.jpg" width=35% align=left />
+<span>The $2 ESP32
+<ul>
+<li>510k RAM</li>
+<li>4Mb Flash</li>
+<li>Wifi and Bluetooth</li>
+<li>240MHz dual core</li>
+</ul>
+</span>
+</span>
+</div>
+
+<div id=slide10.7 style="display: none" class="other-slide">
+<center>What is a small device in 2021?</center>
+<span>
+<img src="images/esp32-from-alibaba.jpg" width=35% align=left />
+<span>The $2 ESP32
+<ul>
+<li>510k RAM</li>
+<li>4Mb Flash</li>
+<li>Wifi and Bluetooth</li>
+<li>240MHz dual core</li>
+<li style="color: #ff4040">No memory protection</li>
+</ul>
+</span>
+</span>
+</div>
+
+<div id=slide20.1 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -167,7 +276,7 @@ id          |     |     |     |     |     |     |     |
 
 </pre></div>
 
-<div id=slide8 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide20.2 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -203,7 +312,7 @@ id          |     |     |     |     |     |     |     |
 
 </pre></div>
 
-<div id=slide9 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide20.3 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -239,7 +348,7 @@ close|     |     |     |     |     |     |  *  |
      +-----+-----+-----+-----+-----+-----+-----+
 </pre></div>
 
-<div id=slide10 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide20.4 style="display: none" class="shaky-container"><pre class="shaky">
 
                                                                   Point:   0
                                     do:         3 
@@ -289,7 +398,7 @@ close
  
 </pre></div>
 
-<div id=slide11 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide20.5 style="display: none" class="shaky-container"><pre class="shaky">
 
                                                                   Point:   0
                                     do:         3 
@@ -315,7 +424,7 @@ close
 
 </pre></div>
 
-<div id=slide12 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide20.6 style="display: none" class="shaky-container"><pre class="shaky">
 
                                                                   Point:   0
                                     do:         3 
@@ -358,7 +467,7 @@ close
  
 </pre></div>
 
-<div id=slide13 style="display: inline" class="shaky-container"><pre class="shaky">
+<div id=slide20.7 style="display: none" class="shaky-container"><pre class="shaky">
 
                                                                   Point:   0
                                     do:         3 
@@ -397,11 +506,11 @@ close
          Method* method = dispatch_table[index]    // &amp;List.size
 
          
-         if (method-&gt;method_number() != name) throw no_such_method();
+         if (method-&gt;method_number() != name) throw_no_such_method();
  
 </pre></div>
 
-<div id=slide14 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.1 style="display: none" class="shaky-container"><pre class="shaky">
     
 
 
@@ -416,7 +525,7 @@ close
                    5V | |Gnd
 </pre></div>
 
-<div id=slide15 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.2 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -430,7 +539,7 @@ close
         |       +---------------+       |                +--------+                  
 </pre></div>
 
-<div id=slide16 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.3 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -446,7 +555,7 @@ close
                 +----+----+----+----+----+----+----+----+----+    +----
 </pre></div>
 
-<div id=slide17 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.4 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -462,7 +571,7 @@ close
         --------+    +----+----+----+----+----+----+----+----+----+
 </pre></div>
 
-<div id=slide18 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.5 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -478,7 +587,7 @@ close
         --------+    +----+----+----+----+----+----+----+----+
 </pre></div>
 
-<div id=slide19 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.6 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -494,7 +603,7 @@ close
                 +    +----+----+    +----+----+    +----+----+
 </pre></div>
 
-<div id=slide20 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.7 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
@@ -519,7 +628,7 @@ close
                           +----+    +---------+         +-----
 </pre></div>
 
-<div id=slide21 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide30.8 style="display: none" class="shaky-container"><pre class="shaky">
 
 
 
