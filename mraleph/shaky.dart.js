@@ -3073,7 +3073,7 @@ Vm:[function(){var z=W.vD(document.querySelectorAll("pre.shaky"),null)
 z.aN(z,L.hH())},"$0","os",0,0,74,"refresh"],
 YF:[function(){var z,y,x,w,v
 z=$.cM()
-y=Q.KG(P.EF(["google",P.EF(["families",["Gloria Hallelujah"]],null,null),"active",L.os()],null,null))
+y=Q.KG(P.EF(["google",P.EF(["families",["Caveat"]],null,null),"active",L.os()],null,null))
 x=J.x(y)
 if(!x.$isT8&&!x.$iscX)H.vh(P.u("object must be a Map or Iterable"))
 z.saq(new Q.pk(P.ND(P.M0(y))))
@@ -3161,7 +3161,7 @@ Yy:function(a){var z,y
 z=this.Ee
 y=J.RE(z)
 y.sWi(z,3)
-y.sEJ(z,"20pt 'Gloria Hallelujah'")
+y.sEJ(z,"30pt 'Caveat'")
 y.snH(z,"middle")},
 static:{J1:[function(a){var z=new L.m6(C.pr,J.PB(a,"2d"),null,null)
 z.Yy(a)

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Neopixel on the UART</title>
+<title>Toit - a fast compact VM for IoT</title>
 <style>
 html, body {
   height:99%;
@@ -26,7 +26,7 @@ html, body {
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Caveat:wght@700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="mraleph/shaky.dart.js"></script>
 <script>
 page = 13
@@ -240,9 +240,6 @@ close|     |     |     |     |     |     |  *  |
 </pre></div>
 
 <div id=slide10 style="display: none" class="shaky-container"><pre class="shaky">
-</pre></div>
-
-<div id=slide11 style="display: none" class="shaky-container"><pre class="shaky">
 
                                                                   Point:   0
                                     do:         3 
@@ -292,7 +289,7 @@ close
  
 </pre></div>
 
-<div id=slide12 style="display: none" class="shaky-container"><pre class="shaky">
+<div id=slide11 style="display: none" class="shaky-container"><pre class="shaky">
 
                                                                   Point:   0
                                     do:         3 
@@ -316,6 +313,49 @@ close
  
      0        1        2          3         4       5          6              7          ...
 
+</pre></div>
+
+<div id=slide12 style="display: none" class="shaky-container"><pre class="shaky">
+
+                                                                  Point:   0
+                                    do:         3 
+                                                                  List:    1
+                                    to_string:  7 
+                                                                  Map:     2
+                                    x:          0 
+                                                                  Foo:     3
+                                    y:          1    
+                                                                  Bar:     4
+                                    size:       1 
+                                                                  Baz:     5
+                                   close:       0 
+  Dispatch table                                                  Socket:  6
+
+ +-------+--------+----------+---------+--------+--------+-------------+----------------+-
+ |       |        |          |         |        |        |             |                |
+ |Point.x| Point.y| List.size| Map.size| List.do| Map.do | Socket.close| Point.to_string|
+ |       |        |          |         |        |        |             |                |
+ +-------+--------+----------+---------+--------+--------+-------------+----------------+-
+
+     0        1        2          3         4       5          6              7          ...
+
+
+
+   For example:      Calling the size() method on an object that is a map:
+
+
+
+         int clas = object.get_class()             // 2
+
+
+         int name = bytecode.get_method_number()   // 1
+
+
+         int index = clas + name                   // 2 + 1 = 3
+
+
+         Method* method = dispatch_table[index]    // &amp;Map.size
+ 
 </pre></div>
 
 <div id=slide13 style="display: inline" class="shaky-container"><pre class="shaky">
@@ -343,19 +383,21 @@ close
      0        1        2          3         4       5          6              7          ...
 
 
-   For example:
+
+   Exception example:   Calling the close() method on an object that is a map:
 
 
-      Calling the size() method on an object that is a map:
+
+         int name = bytecode.get_method_number()   // 0
 
 
-         int clas = object.get_class()             // 2
+         int index = object.get_class() + name     // 2 + 0 = 2
 
 
-         int name = bytecode.get_method_number()   // 1
+         Method* method = dispatch_table[index]    // &amp;List.size
 
-
-         int index = clas + name                   // 2 + 1 = 3
+         
+         if (method-&gt;method_number() != name) throw no_such_method();
  
 </pre></div>
 
@@ -364,14 +406,14 @@ close
 
 
 
-        +--------+        +--------+             +--------+
-        |        |    din |   *    |dout     din |   *    |
-        |       *+--------+-      -+-------------+-      -+--
-        |  ESP32 |   +----+--------+-------------+--------+--
-        |        |   | +--+--------+-------------+--------+--
-        +--------+   | |  +--------+             +--------+
-                     | |   
-                  5V | |Gnd
+        +---------+        +--------+             +--------+
+        |         |    din |        |dout     din |        |
+        |        *+--------+-  *   -+-------------+-  *   -+--
+        | ESP32   |   +----+--------+-------------+--------+--
+        |         |   | +--+--------+-------------+--------+--
+        +---------+   | |  +--------+             +--------+
+                      | |   
+                   5V | |Gnd
 </pre></div>
 
 <div id=slide15 style="display: none" class="shaky-container"><pre class="shaky">
@@ -425,9 +467,9 @@ close
 
 
 
-        idle    start                                    stop start
+        idle    start                                   stop start
 
-                 bit            data bits                 bit  bit
+                 bit            data bits                bit  bit
                 +----+----+----+----+----+----+----+----+    +----
                 |    |    |    |    |    |    |    |    |    |
                 |    |    |    |    |    |    |    |    |    |
