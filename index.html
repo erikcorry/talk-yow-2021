@@ -49,6 +49,8 @@ keydown = function(e) {
   if (e.code == "ArrowRight") next()
   else if (e.code == "Space") next()
   else if (e.code == "ArrowDown") next()
+  else if (e.code == "KeyJ") next()
+  else if (e.code == "KeyK") previous()
   else if (e.code == "ArrowLeft") previous()
   else if (e.code == "Backspace") previous()
   else if (e.code == "ArrowUp") previous()
@@ -359,8 +361,8 @@ previous = function() {
 
 
 
-
                                  Class id
+
 
              Point  List  Map   Foo   Bar   Baz  Socket
             +-----+-----+-----+-----+-----+-----+-----+
@@ -376,17 +378,17 @@ previous = function() {
           x |     |     |     |     |     |     |     |
             |     |     |     |     |     |     |     |
 Method      +-----+-----+-----+-----+-----+-----+-----+
-            |     |     |     |     |     |     |     |
+            |     |     |     |     |     |     |     |                    Diagramming
 id        y |     |     |     |     |     |     |     |
             |     |     |     |     |     |     |     |
-            +-----+-----+-----+-----+-----+-----+-----+
+            +-----+-----+-----+-----+-----+-----+-----+                       tool
             |     |     |     |     |     |     |     |
        size |     |     |     |     |     |     |     |
-            |     |     |     |     |     |     |     |
+            |     |     |     |     |     |     |     |                     thanks to
             +-----+-----+-----+-----+-----+-----+-----+
             |     |     |     |     |     |     |     |
-      close |     |     |     |     |     |     |     |
-            |     |     |     |     |     |     |     |
+      close |     |     |     |     |     |     |     |                      @mraleph
+            |     |     |     |     |     |     |     |                     
             +-----+-----+-----+-----+-----+-----+-----+
 
 </pre></div>
@@ -395,8 +397,8 @@ id        y |     |     |     |     |     |     |     |
 
 
 
-
                                  Class id
+
 
              Point  List  Map   Foo   Bar   Baz  Socket
             +-----+-----+-----+-----+-----+-----+-----+
@@ -526,32 +528,32 @@ x                              +-----+-----+-----+-----+-----+-----+-----+-----+
                                    close:       9 
   Dispatch table                                                  Socket:  6
 
-+-------+--+---------+---------+--------+--+--------+-------+----------------+-
-|       |  |         |         |        |  |        |       |                |
-|Point.x|  |List.size| Map.size| Point.y|  |List.do |Map.do | Point.to_string| ...
-|       |  |         |         |        |  |        |       |                |
-+-------+--+---------+---------+--------+--+--------+-------+----------------+-
-
-
-                                        +--+--------+-------+----------------+-----+-----+-
-                                     do |  |        |       |                |     |     |
-                                        |  |  *     |  *    |                |     |     |
-x                                       +--+--------+-------+----------------+-----+-----+-
- |                                                to_string |                |     |     |
- v                                                          |  *             |  *  |  *  |
-+-------+--+---------+---------+--------+-----+-----+-------+----------------+-----+-----+-
-|       |  |         |         |        |     |     |                       
-|  *    |  |         |         |        |     |     |                       
-+-------+--+---------+---------+--------+-----+-----+-------+----------------+-----+-----+
-                             y |        |     |     |       |                |     |     |
-                               |  *     |     |     |       |                |     |     |
-        +--+---------+---------+--------+-----+-----+-------+----------------+-----+-----+
-   size |  |         |         |        |     |     |       |               
-        |  |  *      |  *      |        |     |     |       |               
-        +--+---------+---------+--------+-----+-----+-------+                +-----+-----+-
-                                                                             |     |     | 
-                                                                        close|     |     | 
-                                                                             +-----+-----+-
++-------+---+---------+---------+--------+---+--------+-------+----------------+-
+|       |   |         |         |        |   |        |       |                |
+|Point.x|   |List.size| Map.size| Point.y|   |List.do |Map.do | Point.to_string| ...
+|       |   |         |         |        |   |        |       |                |
++-------+---+---------+---------+--------+---+--------+-------+----------------+-
+                                             
+                                             
+                                         +---+--------+-------+----------------+-----+-----+-
+                                      do |   |        |       |                |     |     |
+                                         |   |  *     |  *    |                |     |     |
+x                                        +---+--------+-------+----------------+-----+-----+-
+ |                                                  to_string |                |     |     |
+ v                                                            |  *             |  *  |  *  |
++-------+---+---------+---------+--------+------+-----+-------+----------------+-----+-----+-
+|       |   |         |         |        |      |     |                       
+|  *    |   |         |         |        |      |     |                       
++-------+---+---------+---------+--------+------+-----+-------+----------------+-----+-----+
+                              y |        |      |     |       |                |     |     |
+                                |  *     |      |     |       |                |     |     |
+        +---+---------+---------+--------+------+-----+-------+----------------+-----+-----+
+   size |   |         |         |        |      |     |       |               
+        |   |  *      |  *      |        |      |     |       |               
+        +---+---------+---------+--------+------+-----+-------+                +-----+-----+-
+                                                                               |     |     | 
+                                                                          close|     |     | 
+                                                                               +-----+-----+-
 </pre></div>
 
 <div id=slide20.5 style="display: none" class="shaky-container"><pre class="shaky">
@@ -710,7 +712,7 @@ x                                       +--+--------+-------+----------------+--
 <ul>
 <li>Optional typing with nullable types</li>
 <li>Garbage collection</li>
-<li>A well thought out core library</li>
+<li>Nice syntax for fast lambdas</li>
 </ul>
 </div>
 </div>
@@ -721,6 +723,7 @@ x                                       +--+--------+-------+----------------+--
 <ul>
 <li>Optional typing with nullable types</li>
 <li>Garbage collection</li>
+<li>Nice syntax for fast lambdas</li>
 <li>A well thought out core library</li>
 </ul>
 </div>
@@ -732,6 +735,7 @@ x                                       +--+--------+-------+----------------+--
 <ul>
 <li>Optional typing with nullable types</li>
 <li>Garbage collection</li>
+<li>Nice syntax for fast lambdas</li>
 <li>A <a href="https://blog.toit.io/hash-maps-that-dont-hate-you-1a96150b492a" target=_blank>well thought out core library</a></li>
 </ul>
 </div>
@@ -757,6 +761,10 @@ x                                       +--+--------+-------+----------------+--
 
 <div id=slide26.2 style="display: none" class="other-slide">
 <center><a target=_blank href="https://www.youtube.com/watch?v=mni8DXKHUvs">Toit like a Toiger</a></center>
+</div>
+
+<div id=slide26.3 style="display: none" class="other-slide">
+<center><img src=images/neopixel-ring.jpg width=40% /></center>
 </div>
 
 <div id=slide30.1 style="display: none" class="shaky-container"><pre class="shaky">
